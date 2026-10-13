@@ -1,0 +1,103 @@
+:root{
+  --bg: #0e1220;
+  --case: #171c2e;
+  --key: #222945;
+  --key-hover: #2b325296;
+  --op: #ff9f5b;
+  --op-hover: #ffb27a;
+  --secondary: #3a4166;
+  --ink: #f4f6ff;
+  --muted: #7c85ad;
+  --radius: 18px;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: radial-gradient(circle at 30% 20%, #1a2240, var(--bg) 60%);
+  font-family: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.calculator{
+  width: 320px;
+  background: var(--case);
+  border-radius: 28px;
+  padding: 1.6rem;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.screen{
+  text-align: right;
+  padding: 1.6rem 0.6rem 1.2rem;
+  min-height: 6rem;
+}
+
+.expression{
+  color: var(--muted);
+  font-size: 1rem;
+  min-height: 1.3rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.result{
+  color: var(--ink);
+  font-size: 2.6rem;
+  font-weight: 600;
+  overflow-x: auto;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.keys{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+}
+
+.key{
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--key);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1.1rem 0;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.key:hover{ background: var(--key-hover); }
+.key:active{ transform: scale(0.95); }
+
+.key-zero{ grid-column: span 2; }
+
+.op-secondary{
+  background: var(--secondary);
+  color: var(--ink);
+}
+
+.operator{
+  background: transparent;
+  color: var(--op);
+  border: 1.5px solid var(--op);
+}
+.operator:hover{ background: rgba(255,159,91,0.12); color: var(--op-hover); }
+.operator.selected{ background: var(--op); color: var(--case); }
+
+.equals{
+  background: var(--op);
+  color: var(--case);
+  font-weight: 700;
+}
+.equals:hover{ background: var(--op-hover); }
+
+@media (max-width: 360px){
+  .calculator{ width: 92vw; }
+}
